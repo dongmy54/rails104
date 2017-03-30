@@ -17,8 +17,8 @@ class GroupsController < ApplicationController
     def create
     	@group = Group.new(group_params)
         @group.user = current_user
-        current_user.join!(@group)
     	if @group.save
+            current_user.join!(@group)
     		redirect_to groups_path
     		flash[:notice] = "群创建成功！"
     	else
